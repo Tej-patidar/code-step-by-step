@@ -1,14 +1,8 @@
-const app = require('./app')
-const fs = require('fs')
-
-// console.log(app.z())
-
-// const arr = [1,2,3,4,5,6];
-// const filteredvalue = arr.filter((vall)=>{
-//     return vall <= 4;
-// })
-// console.log(filteredvalue)
+const http = require("http");
 
 
-// fs.writeFileSync('hello.txt',"This is the NewTxt file");
-console.log(__filename)
+http.createServer((req,res)=>{
+    res.write("<h1>helllo these is server</h1>");
+    res.end()
+}).listen(4500);
+
