@@ -1,8 +1,3 @@
-const http = require("http");
+var color = require('colors')
 
-
-http.createServer((req,res)=>{
-    res.write("<h1>helllo these is server</h1>");
-    res.end()
-}).listen(4500);
-
+console.log('hello'.bgBlue); // outputs green text
