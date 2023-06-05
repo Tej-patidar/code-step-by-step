@@ -3,11 +3,14 @@ const app = express();
  
 
 app.get('/',(req,res)=>{
-     res.send("These is a Homepage")
+     console.log("these is the data given by the Browser >>>>", req.query.name)
+     res.send("<h1>Hello These is the Home Page </h1>")
 })
 
 app.get('/about',(req,res)=>{
-     res.send("These is a About Homepage")
+     res.send(`
+     <input type=text  placeholder="Type Name" value=" ${req.query.name}"/>
+     `)
 })
 
 
