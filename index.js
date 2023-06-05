@@ -1,9 +1,20 @@
-let a = 10;
-let b = 0;
+const express = require('express');
+const app = express();
+ 
 
-setTimeout(()=>{
-     b = 20
-     console.log(a+b)
-},3000)
+app.get('/',(req,res)=>{
+     res.send("These is a Homepage")
+})
 
-console.log(a+b);
+app.get('/about',(req,res)=>{
+     res.send("These is a About Homepage")
+})
+
+
+app.get('/help',(req,res)=>{
+     res.send("These is a help Homepage")
+})
+
+
+
+app.listen(4000);
