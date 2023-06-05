@@ -7,10 +7,18 @@
     <title>Profile page</title>
 </head>
 <body>
+    <%- include('common/header') %>
+
     <h1>Welcome <%= user.Name %></h1>
     <h3><%= user.Fname %></h3>
     <h3><%= user.Mnane %></h3>
     <h3><%= user.email %></h3>
+
+    <ul>
+       <% user.skills.forEach((item)=>{ %>
+     <li> <%= item%></li>
+       <% }) %>
+    </ul>
    
 </body>
 </html>

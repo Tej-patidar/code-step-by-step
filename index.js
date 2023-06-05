@@ -13,9 +13,14 @@ app.get("/profile", (_, res) => {
           Fname: 's.l. patidar',
           Mnane: 'sangeeta patiar',
           email: 'tej@gmail.com',
+          skills:['html','css','bootstrap','javascript','Nodejs','MongoDB']
      }
      res.render('profile',{user})
    });
+
+   app.get('/login',(_,res) => {
+     res.render('login')
+   })
 
 app.get("/about", (_, res) => {
   res.sendFile(`${publicPath}/about.html`);
