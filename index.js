@@ -1,11 +1,14 @@
 const fs = require('fs');
-const input = process.argv
+const path = require('path');
 
-if(input[2]==='add'){
-    fs.writeFileSync(input[2],input[3])
+const dirPath = path.join(__dirname,'file')
+// for (let i = 0; i<5; i++){
+//     fs.writeFileSync(dirPath+'/hello'+i+'.txt', "a simmple Text FIle");
+// }
 
-}else if(input[2]==='remove'){
-    fs.unlinkSync(input[3])
-}else{
-    console.log("Invalid Argument !!")
-}
+
+fs.readdir(dirPath,(error,file)=>{
+    file.forEach((item)=>{
+        console.log(item)
+    })
+})
