@@ -1,17 +1,23 @@
-const dbConnect = require('./mongodb')
+const mongoose = require('mongoose');
 
 
-// dbConnect().then((res)=>{
-//     res.find().toArray()
-// .then((data)=>{
-//     console.log(data);
-// })
-// })
 
+const main =async()=>{
+  await mongoose.connect('mongodb://127.0.0.1:27017/E-com');
+  const productSchema = new mongoose.Schema(({
+    name:String,
+    price:String,
+  }))
 
-const main =async ()=>{
-    let data = await dbConnect();
-  data = await  data.find().toArray();
-    console.log(data);
+  const productsModel = mongoose.model('products',productSchema);
+
+  let data = new productsModel({
+    name:"m-10",
+    price:3000,
+  })
+
+  let result = await data.save();
+  console.log(result)
 }
+
 main();
