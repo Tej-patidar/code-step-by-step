@@ -1,20 +1,21 @@
-const express = require("express");
-require("./config");
-const product = require("./product");
+const express = require('express');
+const multer = require('multer');
 const app = express();
-app.use(express.json());
 
-// For search Data
-app.get("/search/:key", async (req, res) => {
-  let data = await product.find({
-    $or: [
-      { name: { $regex: req.params.key } },
-      { brand: { $regex: req.params.key } },
-      { category: { $regex: req.params.key } },
-    ],
-  });
-  console.log(data);
-  res.send(data);
-});
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb){
+      cb(null,"uploads")
+    },
+    filename: function(req,file,cb){
+      cb(null,file.fieldname + '_' + Date.now() + ".jpg")
+    }
+  })
+}).single("user_file")
+
+
+app.post('/upload',upload,(req,res)=>{
+  res.send("File Uploaded !!!!")
+})
 
 app.listen(4000);
